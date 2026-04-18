@@ -19,3 +19,4 @@
 
     - name: 5. Debloating
       include_tasks: tasks/debloat.yml
+      tags: bloat
