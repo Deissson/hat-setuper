@@ -19,25 +19,25 @@
   register: oh_my_zsh_stat
 
 - name: Install Oh My Zsh unattended
+  become_user: "{{ ansible_user_id }}"
   shell:
     cmd: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-  become_user: "{{ ansible_user_id }}"
   when: not oh_my_zsh_stat.stat.exists
 
 - name: Set Oh My Zsh Theme
+  become: false
+  become_user: "{{ ansible_user_id }}"
   lineinfile:
     path: "~{{ ansible_user_id }}/.zshrc"
     regexp: "^ZSH_THEME=.*"
     line: 'ZSH_THEME="half-life"'
     state: present
-  become: false
-  become_user: "{{ ansible_user_id }}"
 
 - name: Configure Oh My Zsh Plugins in .zshrc
+  become: false
+  become_user: "{{ ansible_user_id }}"
   lineinfile:
     path: "~{{ ansible_user_id }}/.zshrc"
     regexp: '^plugins=\(.*\)'
     line: "plugins=(git fedora sudo)"
     state: present
-  become: false
-  become_user: "{{ ansible_user_id }}"
