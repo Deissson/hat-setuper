@@ -33,6 +33,7 @@
       - xorg-x11-drv-nvidia-libs
       - xorg-x11-drv-nvidia-power
       - nvidia-settings
+- name: disable DRM
   ansible.builtin.command:
     cmd: grubby --update-kernel=ALL --args='nvidia-drm.modeset=0'
     changed_when: true

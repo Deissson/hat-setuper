@@ -1,7 +1,7 @@
 - name: Remove Bloat
   dnf:
     name:
-      - libreoffice
+      - "libreoffice*"
       - gnome-calendar
       - gnome-characters
       - gnome-contacts
