@@ -32,6 +32,7 @@
     regexp: "^ZSH_THEME=.*"
     line: 'ZSH_THEME="half-life"'
     state: present
+  when: not oh_my_zsh_stat.stat.exists
 
 - name: Configure Oh My Zsh Plugins in .zshrc
   become: false
@@ -41,3 +42,4 @@
     regexp: '^plugins=\(.*\)'
     line: "plugins=(git fedora sudo)"
     state: present
+  when: not oh_my_zsh_stat.stat.exists
