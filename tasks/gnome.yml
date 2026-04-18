@@ -27,4 +27,5 @@
         key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-type",
         value: "'nothing'",
       }
+  become: false
   tags: gnome
