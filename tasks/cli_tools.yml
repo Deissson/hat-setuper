@@ -7,7 +7,7 @@
       - fastfetch
       - python3
       - zsh
-      - vim-enhanced
+      - vim
       - yt-dlp
       - gh
       - curl

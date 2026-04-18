@@ -1,6 +1,6 @@
 - name: Set ZSH as the default shell
   user:
-    name: "{{ username }}"
+    name: "{{ ansible_user_id }}"
     shell: /bin/zsh
 
 - name: Edit DNF config
@@ -15,27 +15,27 @@
 
 - name: Check if Oh My Zsh is already installed
   stat:
-    path: "~{{ username }}/.oh-my-zsh"
+    path: "~{{ ansible_user_id }}/.oh-my-zsh"
   register: oh_my_zsh_stat
 
 - name: Install Oh My Zsh unattended
   shell:
     cmd: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-  become_user: "{{ username }}"
+  become_user: "{{ ansible_user_id }}"
   when: not oh_my_zsh_stat.stat.exists
 
 - name: Set Oh My Zsh Theme
   lineinfile:
-    path: "~{{ username }}/.zshrc"
+    path: "~{{ ansible_user_id }}/.zshrc"
     regexp: "^ZSH_THEME=.*"
     line: 'ZSH_THEME="half-life"'
     state: present
-  become_user: "{{ username }}"
+  become_user: "{{ ansible_user_id }}"
 
 - name: Configure Oh My Zsh Plugins in .zshrc
   lineinfile:
-    path: "~{{ username }}/.zshrc"
+    path: "~{{ ansible_user_id }}/.zshrc"
     regexp: '^plugins=\(.*\)'
     line: "plugins=(git fedora sudo)"
     state: present
-  become_user: "{{ username }}"
+  become_user: "{{ ansible_user_id }}"

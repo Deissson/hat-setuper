@@ -4,9 +4,6 @@
   connection: local
   become: true
 
-  vars:
-    username: "{{ ansible_user_id }}"
-
   tasks:
     - name: 1. System Maintenance
       include_tasks: tasks/system.yml
