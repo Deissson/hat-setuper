@@ -15,7 +15,7 @@
 
 - name: Check if Oh My Zsh is already installed
   stat:
-    path: "~{{ ansible_user_id }}/.oh-my-zsh"
+    path: "~{{ lookup('env', 'USER') }}/.oh-my-zsh"
   register: oh_my_zsh_stat
 
 - name: Install Oh My Zsh unattended
