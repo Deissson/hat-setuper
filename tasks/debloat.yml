@@ -13,3 +13,4 @@
       - mediawriter
       - simple-scan
     state: absent
+    autoremove: true
