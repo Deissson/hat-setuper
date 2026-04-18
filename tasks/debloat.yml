@@ -14,4 +14,4 @@
       - simple-scan
     state: absent
     autoremove: true
-    tags: bloat
+  tags: bloat
