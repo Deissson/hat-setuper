@@ -1,0 +1,16 @@
+- name: Remove Bloat
+  dnf:
+    name:
+      - libreoffice
+      - gnome-calendar
+      - gnome-characters
+      - gnome-contacts
+      - gnome-maps
+      - totem
+      - gnome-tour
+      - gnome-logs
+      - yelp
+      - snapshot
+      - mediawriter
+      - simple-scan
+    state: absent

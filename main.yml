@@ -1,0 +1,23 @@
+---
+- name: Personal Fedora Daily Driver Setup
+  hosts: localhost
+  connection: local
+  become: true
+
+  vars:
+    username: "{{ ansible_user_id }}"
+
+  tasks:
+    - name: 1. System Maintenance
+      include_tasks: tasks/system.yml
+
+    - name: 2. Core CLI Tools
+      include_tasks: tasks/cli_tools.yml
+
+    - name: 3. GUI Applications
+      include_tasks: tasks/flatpak.yml
+
+    - name: 4. Configuration & Dotfiles
+      include_tasks: tasks/dotfiles.yml
+    - name: 5. Debloating
+      include_tasks: tasks/debloat.yml

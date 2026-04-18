@@ -1,0 +1,38 @@
+- name: Upgrade all packages
+  dnf:
+    name: "*"
+    state: latest
+
+- name: Install RPM Fusion (Free)
+  dnf:
+    name: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm"
+    state: present
+    disable_gpg_check: yes
+
+- name: Install RPM Fusion (Non-Free)
+  dnf:
+    name: "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_major_version }}.noarch.rpm"
+    state: present
+    disable_gpg_check: yes
+
+- name: Install Tools
+  dnf:
+    name:
+      - gnome-tweaks
+    state: present
+
+- name: Install NVIDIA drivers
+  dnf:
+    name:
+      - gcc
+      - kernel-headers
+      - kernel-devel
+      - akmod-nvidia
+      - xorg-x11-drv-nvidia
+      - xorg-x11-drv-nvidia-cuda
+      - xorg-x11-drv-nvidia-libs
+      - xorg-x11-drv-nvidia-power
+      - nvidia-settings
+  ansible.builtin.command:
+    cmd: grubby --update-kernel=ALL --args='nvidia-drm.modeset=0'
+    changed_when: true

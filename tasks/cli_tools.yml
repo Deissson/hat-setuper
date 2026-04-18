@@ -1,0 +1,14 @@
+- name: Install essential CLI packages
+  dnf:
+    name:
+      - git
+      - vim
+      - htop
+      - fastfetch
+      - python3
+      - zsh
+      - vim-enhanced
+      - yt-dlp
+      - gh
+      - curl
+    state: present

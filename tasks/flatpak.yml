@@ -1,0 +1,21 @@
+- name: Add Flathub remote
+  flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+
+- name: Install Flatpaks
+  flatpak:
+    name:
+      - com.discordapp.Discord
+      - com.spotify.Client
+      - com.visualstudio.code
+      - com.mattjakeman.ExtensionManager
+      - org.telegram.desktop
+      - dev.zed.Zed
+      - org.localsend.localsend_app
+      - io.gitlab.librewolf-community
+      - io.bassi.Amberol
+      - dev.mohfy.quizbite
+      - net.lutris.Lutris
+    state: present
