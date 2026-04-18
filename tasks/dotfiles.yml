@@ -28,7 +28,7 @@
   become: false
   become_user: "{{ ansible_user_id }}"
   lineinfile:
-    path: "~{{ ansible_user_id }}/.zshrc"
+    path: "~{{ lookup('env', 'USER') }}/.zshrc"
     regexp: "^ZSH_THEME=.*"
     line: 'ZSH_THEME="half-life"'
     state: present
@@ -37,7 +37,7 @@
   become: false
   become_user: "{{ ansible_user_id }}"
   lineinfile:
-    path: "~{{ ansible_user_id }}/.zshrc"
+    path: "~{{ lookup('env', 'USER') }}/.zshrc"
     regexp: '^plugins=\(.*\)'
     line: "plugins=(git fedora sudo)"
     state: present
