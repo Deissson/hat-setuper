@@ -20,3 +20,7 @@
     - name: 5. Debloating
       include_tasks: tasks/debloat.yml
       tags: bloat
+
+    - name: 6. Setting up GNOME
+      include_tasks: tasks/gnome.yml
+      tags: gnome

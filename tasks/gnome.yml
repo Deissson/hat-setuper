@@ -1,0 +1,30 @@
+- name: GNOME Appearance and Power Settings
+  community.general.dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    # 1. Dark Mode & Purple Accent
+    - {
+        key: "/org/gnome/desktop/interface/color-scheme",
+        value: "'prefer-dark'",
+      }
+    - { key: "/org/gnome/desktop/interface/accent-color", value: "'purple'" }
+
+    # 2. Disable Hot Corner
+    - { key: "/org/gnome/desktop/interface/enable-hot-corner", value: "false" }
+
+    # 3. Disable Mouse Acceleration (Flat profile)
+    - {
+        key: "/org/gnome/desktop/peripherals/mouse/accel-profile",
+        value: "'flat'",
+      }
+
+    # 4. Disable Screen Blank (0 = Never)
+    - { key: "/org/gnome/desktop/session/idle-delay", value: "uint32 0" }
+
+    # 5. Disable Auto Sleep on AC Power
+    - {
+        key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-type",
+        value: "'nothing'",
+      }
+  tags: gnome
