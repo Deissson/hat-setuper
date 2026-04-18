@@ -16,5 +16,7 @@
 
     - name: 4. Configuration & Dotfiles
       include_tasks: tasks/dotfiles.yml
+      become: false
+
     - name: 5. Debloating
       include_tasks: tasks/debloat.yml
